@@ -10,6 +10,13 @@ let defaultSettings = require('./defaults');
 let additionalPaths = [];
 
 module.exports = {
+  postcss: function () {
+    return [
+      require('autoprefixer')({
+        browsers: ['last 2 versions', 'ie >= 8']
+      })
+    ];
+  },
   additionalPaths: additionalPaths,
   port: defaultSettings.port,
   debug: true,
