@@ -2,7 +2,8 @@
 
 import React from 'react';
 import * as THREE from 'three'
-window.THREE = THREE;
+// window.THREE = THREE;
+
 // let ColladaLoader = require('../../../assets/ColladaLoader2.js');
 
 let TWEEN = require('tween.js');
@@ -107,7 +108,7 @@ class BaseSceneComponent extends React.Component {
     }
     scene = new THREE.Scene();
     // scene.fog = new THREE.FogExp2( 0x000000, 0.005, 50 );
-    this.setupShaderBuffer();
+    // this.setupShaderBuffer();
 
     requestAnimationFrame( this.renderLoop.bind( this ));
     this.mounted = true;

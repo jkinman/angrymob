@@ -1,17 +1,19 @@
 'use strict';
 
 import React from 'react';
-import THREE from 'three';
+import * as THREE from 'three';
 import Beacon from './Beacon'
 import TCL from 'three-collada-loader';
 import BaseSceneComponent from './BaseSceneComponent';
+
 let TWEEN = require('tween.js');
 require('styles/Globe3d.sass');
 
 const CAMERA_ANIMATION_DELAY = 3000;
 const CAMERA_ROTATE_TIME = 3000;
 const TEXTURE_SIZE = 512;
-const PRIMARY = 0x53BDFD;
+const PRIMARY = 0x1ec503;
+// const PRIMARY = 0x53BDFD;
 const GREEN = 0x1ec503;
 const BACKGROUND_MESH = false;
 

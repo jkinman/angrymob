@@ -30,7 +30,8 @@ body {
   font-family: 'Open Sans';
   font-weight: 300;
   color: $lt-grey;
-  background-color: black;
+  color: black;
+  background-color: white;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;

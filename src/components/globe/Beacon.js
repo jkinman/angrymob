@@ -1,6 +1,7 @@
 'use strict';
 
-import THREE from 'three';
+import * as THREE from 'three';
+window.THREE = THREE;
 let TWEEN = require('tween.js');
 
 const TEXTURE_SIZE = 512;

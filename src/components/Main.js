@@ -6,10 +6,16 @@ require('styles/App.css');
 import React from 'react';
 
 class AppComponent extends React.Component {
+
+  componentDidMount() {
+    this.mounted = true;
+    this.refs.globe.moveToBottom();
+  }
+
   render() {
     return (
       <div className="index">
-        <Globe />
+        <Globe ref="globe"/>
       </div>
     );
   }
