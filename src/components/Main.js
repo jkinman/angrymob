@@ -7,9 +7,15 @@ import React from 'react';
 
 class AppComponent extends React.Component {
 
-  componentDidMount() {
+
+  constructor(props, context) {
+    super(props, context);
     this.logo = require('../images/angrymob-low.png');
+  }
+
+  componentDidMount() {
     this.mounted = true;
+
     this.refs.globe.moveToBottom(
       // () => {},
       // new THREE.Vector3(50, -10, 190 )
@@ -31,8 +37,8 @@ class AppComponent extends React.Component {
 
     return (
       <div className="index">
-        <Globe ref="globe"/>
         <img width="750px" src={this.logo} />
+        <Globe ref="globe"/>
       </div>
     );
   }

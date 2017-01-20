@@ -12,8 +12,8 @@ require('styles/Globe3d.sass');
 const CAMERA_ANIMATION_DELAY = 3000;
 const CAMERA_ROTATE_TIME = 3000;
 const TEXTURE_SIZE = 512;
-// const PRIMARY = 0x1ec503;
-const PRIMARY = 0x53BDFD;
+const PRIMARY = 0x666666;
+// const PRIMARY = 0x53BDFD;
 const GREEN = 0x1ec503;
 const BACKGROUND_MESH = false;
 
