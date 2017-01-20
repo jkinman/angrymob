@@ -12,8 +12,8 @@ require('styles/Globe3d.sass');
 const CAMERA_ANIMATION_DELAY = 3000;
 const CAMERA_ROTATE_TIME = 3000;
 const TEXTURE_SIZE = 512;
-const PRIMARY = 0x1ec503;
-// const PRIMARY = 0x53BDFD;
+// const PRIMARY = 0x1ec503;
+const PRIMARY = 0x53BDFD;
 const GREEN = 0x1ec503;
 const BACKGROUND_MESH = false;
 
@@ -219,7 +219,7 @@ class Globe3dComponent extends BaseSceneComponent {
 
   }
 
-  showGlobalEvent(event) {
+  showGlobalEvent(event = {}) {
     this.clearDeadGlobalGeo();
     // extract a latlong from the Tweet object
     let latlong = false;
@@ -454,6 +454,7 @@ class Globe3dComponent extends BaseSceneComponent {
     }
 
       moveToBottom( cb ) {
+
         this.animateLookAt( new THREE.Vector3( 0, 0, 0 ), new THREE.Vector3(0, 100, 0 ));
 
         let fromVector = this.camera.position;
