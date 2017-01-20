@@ -53,6 +53,10 @@ function getDefaultModules() {
         loader: 'file-loader'
       },
       {
+        test: /\.(dae)$/,
+        loader: 'file-loader'
+      },
+      {
         test: /\.(mp4|ogg|svg|ttf|otf|eot)$/,
         loader: 'file-loader'
       }

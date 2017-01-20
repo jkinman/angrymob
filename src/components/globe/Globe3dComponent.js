@@ -290,8 +290,9 @@ class Globe3dComponent extends BaseSceneComponent {
       convertUpAxis: false
     };
 
+    let globe_thin_lines = require( '../../blender/globe_thin_lines.dae' );
     this.loader.load(
-      '../../blender/globe_thin_lines.dae',
+      globe_thin_lines,
       ( obj ) => {
         let continents = [];
         //////////////////////////////////////////////
