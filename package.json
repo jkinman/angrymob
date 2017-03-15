@@ -65,6 +65,8 @@
   "dependencies": {
     "core-js": "^2.0.0",
     "d3": "^4.2.1",
+    "fontawesome": "^4.7.2",
+    "jquery": "^3.1.1",
     "normalize.css": "^4.0.0",
     "react": "^15.0.0",
     "react-dom": "^15.0.0",

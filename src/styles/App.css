@@ -35,7 +35,6 @@ body {
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;
-  overflow: hidden;
   font-size: $base-font-size;
   line-height: $base-line-height;
 }
