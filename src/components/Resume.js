@@ -1,12 +1,13 @@
-
 require('../styles/orbittheme/css/styles.css');
 require('normalize.css/normalize.css');
 
 global.$ = require('jquery');
 global.jQuery = global.$;
-require('bootstrap');
+require( 'bootstrap' );
 require( 'fontawesome' );
+
 import React from 'react';
+import Barchart from './Barchart'
 
 class ResumeComponent extends React.Component {
 
@@ -42,6 +43,25 @@ class ResumeComponent extends React.Component {
         ],
         tech: 'JS (ES6, TypeScript), React, Riot, Angular2, Aurelia, Backbone / Marionette, Node (express), .NET, MongoDB, MsSql, Docker, Websockets (firebase), Phonegap, Electron, WebGL (THREE.js), 2d Canvas (D3), Mocha, Jasmine'
       }
+    ];
+
+    this.skills = [
+      { skilltype: 'javascript',
+        data: [
+          {title: 'React',      percent: 80 },
+          {title: 'Angular 2',  percent: 50 },
+          {title: 'Angular',    percent: 90 },
+          {title: 'TypeScript',  percent: 72 },
+          {title: 'Node',  percent: 70 },
+          {title: 'Angular 2',  percent: 80 },
+        ]
+      },
+      { skilltype: 'JS Frameworks',
+        data: [
+          {title: 'React',      percent: 80 },
+          {title: 'Angular 2',  percent: 80 }
+        ]
+      },
     ];
 
 
@@ -121,7 +141,7 @@ class ResumeComponent extends React.Component {
                   {this.experiance.map( (e, i) => {
                     return (
 
-                  <div className="item">
+                  <div className="item" key={`exp${i}`}>
                       <div className="meta">
                           <div className="upper-row">
                               <h3 className="job-title">{e.role}</h3>
@@ -133,17 +153,17 @@ class ResumeComponent extends React.Component {
                           <p>{e.body}</p>
                             <p>Products developed:</p>
                             <ul>
-                            {e.bullets.map( ( bullet ) => {
+                            {e.bullets.map( ( bullet, j ) => {
                               return(
-                                <li>{bullet}</li>
-                              );
+                                <li key={`bullet${j}`}>{bullet}</li>
+                              )
                             })}
                           </ul>
                           <h5>{e.tech}</h5>
                       </div>
                   </div>
-                );
-              })};
+                )
+              })}
 
 
               </section>
@@ -172,18 +192,28 @@ class ResumeComponent extends React.Component {
                   </div>
               </section>
 
-              <section className="skills-section section">
-                  <h2 className="section-title"><i className="fa fa-rocket"></i>Frameworks &amp; Proficiency</h2>
-                  <div className="skillset">
-                      <div className="item">
-                          <h3 className="level-title">React</h3>
-                          <div className="level-bar">
-                              <div className="level-bar-inner" data-level="75%">
-                              </div>
-                          </div>
+              {this.skills.map( (e, i) => {
+                return(
+
+              <section className="skills-section section" key={`skills-section${i}`}>
+                  <h2 className="section-title"><i className="fa fa-rocket"></i>{e.skilltype}</h2>
+                  <div className="wrapper skill">
+                      <div className="container skill">
+                          <div className="row">
+                            <div className="col-md-12">
+
+                          {e.data.map( (data, i) => {
+                            return(
+                              <Barchart percent={data.percent} title={data.title} key={`skill${i}`} ></Barchart>
+                            )
+                          })}
+                        </div>
                       </div>
-                  </div>
+                    </div>
+                </div>
               </section>
+              )
+            })}
 
           </div>
       </div>

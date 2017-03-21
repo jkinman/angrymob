@@ -115,3 +115,7 @@ h3 {
   border-width: 1px 0;
   background: #666;
 }
+
+.vflex {
+  display: flex;
+}
