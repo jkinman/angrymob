@@ -1,6 +1,7 @@
 require('../styles/orbittheme/css/styles.css');
 require('../styles/resume.scss');
 require('normalize.css/normalize.css');
+require('../styles/orbittheme/plugins/font-awesome/scss/font-awesome.scss');
 
 global.$ = require('jquery');
 global.jQuery = global.$;
@@ -93,55 +94,55 @@ class ResumeComponent extends React.Component {
     // <Globe ref="globe"/>
     return (
       <div className="wrapper">
-      <BackgroundScene className="backgroundscene" />
+        <BackgroundScene className="backgroundscene" />
 
-          <div className="sidebar-wrapper">
-              <div className="profile-container">
-                  <img className="profile" src={this.profile} alt="" />
-                  <h1 className="name">Joel Kinman</h1>
-                  <h3 className="tagline">Full Stack Developer</h3>
-              </div>
-
-              <div className="contact-container container-block">
-                  <ul className="list-unstyled contact-list">
-                      <li className="email"><i className="fa fa-envelope"></i><a href="mailto: joel.kinman@gmail.com">joel.kinman@gmail.com</a></li>
-                      <li className="phone"><i className="fa fa-phone"></i><a href="tel:778 788 1455">778-788-1455</a></li>
-                      <li className="linkedin"><i className="fa fa-linkedin"></i><a href="#" target="_blank">linkedin.com/in/alandoe</a></li>
-                      <li className="github"><i className="fa fa-github"></i><a href="#" target="_blank">github.com/jkinman</a></li>
-                  </ul>
-              </div>
-              <div className="skills-container container-block">
-                  <h2 className="container-block-title">Skills</h2>
-                  <div className="item">
-                      <h4 className="degree">MSc in Computer Science</h4>
-                      <h5 className="meta">University of London</h5>
-                      <div className="time">2011 - 2012</div>
-                  </div>
-                  <div className="item">
-                      <h4 className="degree">BSc in Applied Mathematics</h4>
-                      <h5 className="meta">Bristol University</h5>
-                      <div className="time">2007 - 2011</div>
-                  </div>
-              </div>
-
-              <div className="languages-container container-block">
-                  <h2 className="container-block-title">Languages</h2>
-                  <ul className="list-unstyled interests-list">
-                      <li>English <span className="lang-desc">(Native)</span></li>
-                      <li>French <span className="lang-desc">(Professional)</span></li>
-                      <li>Spanish <span className="lang-desc">(Professional)</span></li>
-                  </ul>
-              </div>
-
-
+        <div className="sidebar-wrapper">
+          <div className="profile-container">
+            <img className="profile" src={this.profile} alt="" />
+            <h1 className="name">Joel Kinman</h1>
+            <h3 className="tagline">Full Stack Developer</h3>
           </div>
 
-          <div className="main-wrapper">
+          <div className="contact-container container-block">
+            <ul className="list-unstyled contact-list">
+              <li className="email"><i className="fa fa-envelope"></i><a href="mailto: joel.kinman@gmail.com">joel.kinman@gmail.com</a></li>
+              <li className="phone"><i className="fa fa-phone"></i><a href="tel:778 788 1455">778-788-1455</a></li>
+              <li className="linkedin"><i className="fa fa-linkedin"></i><a href="#" target="_blank">linkedin.com/in/jkinman</a></li>
+              <li className="github"><i className="fa fa-github"></i><a href="#" target="_blank">github.com/jkinman</a></li>
+            </ul>
+          </div>
+          <div className="skills-container container-block">
+            <h2 className="container-block-title">Skills</h2>
+            {/*  <div className="item">
+              <h4 className="degree">MSc in Computer Science</h4>
+              <h5 className="meta">University of London</h5>
+              <div className="time">2011 - 2012</div>
+              </div>
+              <div className="item">
+              <h4 className="degree">BSc in Applied Mathematics</h4>
+              <h5 className="meta">Bristol University</h5>
+              <div className="time">2007 - 2011</div>
+            </div> */}
+          </div>
 
-              <section className="section summary-section">
-                  <h2 className="section-title"><i className="fa fa-user"></i>Career Profile</h2>
-                  <div className="summary">
-                      <p>I like making cool s*%t. My medium is software, my tools are design patterns. I’ve been writing javascript since day one. I make frontend and backend web, iOS and Android apps. I’ve been creating and consuming REST APIs for 6 years. I made AAA video games for 7 years. I’ve shipped over 13 titles in my career as a game developer. I moved to  the web world because i love the collaboration and agile development of open source. I’ve successfully been on both sides of contracting. I’ve learned the importance of concise, explicit documentation when getting work done by third parties. I’ve worked on development teams of 30 plus people and lead smaller teams. I’m a software engineer and architect  so I can divide and conquer and solve interesting problems. I see myself in junior engineers and try to bring the best out of them.
+          <div className="languages-container container-block">
+            <h2 className="container-block-title">Languages</h2>
+            {/* <ul className="list-unstyled interests-list">
+              <li>English <span className="lang-desc">(Native)</span></li>
+              <li>French <span className="lang-desc">(Professional)</span></li>
+              <li>Spanish <span className="lang-desc">(Professional)</span></li>
+            </ul> */}
+          </div>
+
+
+        </div>
+
+        <div className="main-wrapper">
+
+          <section className="section summary-section">
+            <h2 className="section-title"><i className="fa fa-user"></i>Career Profile</h2>
+            <div className="summary">
+              <p>I love making cool sh*t. I’ve been working with Javascript since day one. I’ve been making cutting edge frontend apps for a decade, and creating and consuming REST APIs for almost that long. I made AAA video games for 7 years and shipped 13 games during my career. I officially transitioned to the web world ten years ago. I like the rapid nature and collaboration web development offers. I’m experienced being a client and consultant. I’ve learned the importance of concise, explicit documentation when getting work done by third parties. I’ve lead development teams of around five people and worked on teams of 30 plus people. I’ve learned the importance of proper architecture and software engineering methodologies in order to scale projects through practical experience.
   </p>
                   </div>
               </section>
