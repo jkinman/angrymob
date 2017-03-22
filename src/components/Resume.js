@@ -1,4 +1,5 @@
 require('../styles/orbittheme/css/styles.css');
+require('../styles/resume.scss');
 require('normalize.css/normalize.css');
 
 global.$ = require('jquery');
@@ -8,6 +9,8 @@ require( 'fontawesome' );
 
 import React from 'react';
 import Barchart from './Barchart'
+// import NeuralNet from './NeuralNet'
+import BackgroundScene from './BackgroundScene/BackgroundScene';
 
 class ResumeComponent extends React.Component {
 
@@ -15,7 +18,7 @@ class ResumeComponent extends React.Component {
   constructor(props, context) {
     super(props, context);
     // this.logo = require('../images/angrymob-low.png');
-
+    this.profile = require( '../images/joelprofile.jpg');
     this.experiance = [
       {
         company: 'iQmetrix',
@@ -70,6 +73,11 @@ class ResumeComponent extends React.Component {
   componentDidMount() {
     this.mounted = true;
 
+    // this.refs.globe.moveToBottom(
+      // () => {},
+      // new THREE.Vector3(50, -10, 190 )
+    // );
+
   }
 
   render() {
@@ -82,12 +90,15 @@ class ResumeComponent extends React.Component {
         }, 800);
     });
 
+    // <Globe ref="globe"/>
     return (
       <div className="wrapper">
+      <BackgroundScene className="backgroundscene" />
+
           <div className="sidebar-wrapper">
               <div className="profile-container">
-                  <img className="profile" src="assets/images/profile.png" alt="" />
-                  <h1 className="name">Alan Doe</h1>
+                  <img className="profile" src={this.profile} alt="" />
+                  <h1 className="name">Joel Kinman</h1>
                   <h3 className="tagline">Full Stack Developer</h3>
               </div>
 
@@ -99,8 +110,8 @@ class ResumeComponent extends React.Component {
                       <li className="github"><i className="fa fa-github"></i><a href="#" target="_blank">github.com/jkinman</a></li>
                   </ul>
               </div>
-              <div className="education-container container-block">
-                  <h2 className="container-block-title">Education</h2>
+              <div className="skills-container container-block">
+                  <h2 className="container-block-title">Skills</h2>
                   <div className="item">
                       <h4 className="degree">MSc in Computer Science</h4>
                       <h5 className="meta">University of London</h5>
@@ -194,30 +205,27 @@ class ResumeComponent extends React.Component {
 
               {this.skills.map( (e, i) => {
                 return(
+                <section className="skills-section section" key={`skills-section${i}`}>
+                    <h2 className="section-title"><i className="fa fa-rocket"></i>{e.skilltype}</h2>
+                    <div className="wrapper skill">
+                        <div className="container skill">
+                            <div className="row">
+                              <div className="col-md-12">
 
-              <section className="skills-section section" key={`skills-section${i}`}>
-                  <h2 className="section-title"><i className="fa fa-rocket"></i>{e.skilltype}</h2>
-                  <div className="wrapper skill">
-                      <div className="container skill">
-                          <div className="row">
-                            <div className="col-md-12">
-
-                          {e.data.map( (data, i) => {
-                            return(
-                              <Barchart percent={data.percent} title={data.title} key={`skill${i}`} ></Barchart>
-                            )
-                          })}
+                            {e.data.map( (data, i) => {
+                              return(
+                                <Barchart percent={data.percent} title={data.title} key={`skill${i}`} ></Barchart>
+                              )
+                            })}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                </div>
-              </section>
+                  </div>
+                </section>
               )
             })}
-
           </div>
       </div>
-
     );
   }
 }
