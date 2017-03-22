@@ -234,28 +234,31 @@ renderLoop() {
 
 shiftCamera( percent = 1 ) {
 	// console.log( percent );
-	if( this.introTimeline && this.introTimeline.hasOwnProperty( 'kill' )){
-		this.introTimeline.kill();
+	// if( this.introTimeline && this.introTimeline.hasOwnProperty( 'kill' )){
+	// 	this.introTimeline.kill();
+	// }
+
+	// orig camera pos
+	// 0, 0, z = 50
+	let newCameraPos = {
+		x: camera.position.x,
+		y: 120 * percent,
+		z: ((20 - this.cameraStartPos.z) * percent) + this.cameraStartPos.z
 	}
 
-// orig camera pos
-// 0, 0, z = 50
-let newCameraPos = {
-	x: (Math.PI / 2) * percent,
-	y: 120 * percent,
-	z: ((20 - this.cameraStartPos.z) * percent) + this.cameraStartPos.z
-}
+	let newPlaneScalex = ((2 - this.planeOriginalScale.x) * percent) + this.planeOriginalScale.x;
 
-let newPlaneScalex = ((2 - this.planeOriginalScale.x) * percent) + this.planeOriginalScale.x;
-
-	this.introTimeline = new TimelineMax();
-	this.introTimeline.add([
-		TweenLite.fromTo(introContainer, 0.5, {opacity: 1}, {opacity: 0, ease: Power3.easeIn}),
-		TweenLite.to(camera.rotation, 0.5, {x: newCameraPos.x , ease: Power3.easeInOut}),
-		TweenLite.to(camera.position, 0.5, {z: newCameraPos.z, ease: Power3.easeInOut}),
-		TweenLite.to(camera.position, 0.5, {y: newCameraPos.y, ease: Power3.easeInOut}),
-		// TweenLite.to(plane.scale, 0.5 , {x: newPlaneScalex, ease: Power3.easeInOut}),
-	]);
+	camera.position.set( camera.position.x, newCameraPos.y, newCameraPos.z );
+	camera.rotation.x = (Math.PI / 2) * percent;
+	introContainer.opacity = 0;
+	// this.introTimeline = new TimelineMax();
+	// this.introTimeline.add([
+	// 	TweenLite.fromTo(introContainer, 0.5, {opacity: 1}, {opacity: 0, ease: Power3.easeIn}),
+	// 	TweenLite.to(camera.rotation, 0.5, {x: newCameraPos.x , ease: Power3.easeInOut}),
+	// 	TweenLite.to(camera.position, 0.5, {z: newCameraPos.z, ease: Power3.easeInOut}),
+	// 	TweenLite.to(camera.position, 0.5, {y: newCameraPos.y, ease: Power3.easeInOut}),
+	// 	// TweenLite.to(plane.scale, 0.5 , {x: newPlaneScalex, ease: Power3.easeInOut}),
+	// ]);
 
 	// this.introTimeline.add([
 	// 	TweenLite.to(xMark, 0.5, {opacity: 1, ease: Power3.easeInOut}),
