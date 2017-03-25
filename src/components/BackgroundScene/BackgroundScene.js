@@ -2,7 +2,8 @@
 import React from 'react';
 import {TweenLite, Power3, TimelineMax} from "gsap";
 import * as THREE from 'three';
-
+// import DATGUI from 'dat-gui';
+import DATGUI from 'dat-gui';
 require('../../styles/BackgroundScene.scss');
 
 let camera, scene, renderer;
@@ -40,6 +41,10 @@ let timer = 0;
 let introContainer, skyContainer, xMark;
 let scrollTimerID;
 
+let gui = new DATGUI.GUI();
+
+const vertexVariance = 4;
+
 class BackgroundScene extends React.Component {
 
 constructor( props, context ) {
@@ -58,13 +63,7 @@ componentDidMount() {
 		// }, 10 );
 	});
 
-	window.addEventListener("resize", function() {
-
-		camera.aspect = window.innerWidth / window.innerHeight;
-		camera.updateProjectionMatrix();
-		renderer.setSize( window.innerWidth, window.innerHeight );
-
-	});
+	window.addEventListener("resize", this.resize);
 
 	window.addEventListener("mousemove", function(event) {
 
@@ -80,6 +79,22 @@ componentDidMount() {
 
 	this.renderLoop();
 
+	// config dat gui
+	gui.add( camera.position, 'x', -400, 400 );
+	 gui.add( camera.position, 'y', -400, 400 );
+	 gui.add( camera.position, 'z', -400, 400 );
+	 gui.add( camera, 'fov', 1, 200 )
+	 .onFinishChange( ( val ) => {
+	  	this.resize();
+	  });
+
+}
+
+
+resize() {
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+		renderer.setSize( window.innerWidth, window.innerHeight );
 }
 
 init() {
@@ -122,9 +137,9 @@ init() {
 	let darkBlueMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading, side: THREE.DoubleSide, vertexColors: THREE.FaceColors} );
 
 	geometry.vertices.forEach(function(vertice) {
-		vertice.x += (Math.random() - 0.5) * 4;
-		vertice.y += (Math.random() - 0.5) * 4;
-		vertice.z += (Math.random() - 0.5) * 4;
+		vertice.x += (Math.random() - vertexVariance / (vertexVariance / 2)) * vertexVariance;
+		vertice.y += (Math.random() - vertexVariance / (vertexVariance / 2)) * vertexVariance;
+		vertice.z += (Math.random() - vertexVariance / (vertexVariance / 2)) * vertexVariance;
 		vertice.dx = Math.random() - 0.5;
 		vertice.dy = Math.random() - 0.5;
 		vertice.randomDelay = Math.random() * 5;
@@ -186,42 +201,42 @@ renderLoop() {
 
 	for (let i = 0; i < vertices.length; i++) {
 		// Ease back to original vertice position while still maintaining sine wave
-		vertices[i].x -= (Math.sin(timer + vertices[i].randomDelay) / 40) * vertices[i].dx;
-		vertices[i].y += (Math.sin(timer + vertices[i].randomDelay) / 40) * vertices[i].dy;
+		vertices[i].x -= (Math.sin(timer + vertices[i].randomDelay) / 30) * vertices[i].dx;
+		vertices[i].y += (Math.sin(timer + vertices[i].randomDelay) / 30) * vertices[i].dy;
 		// ((vertices[i].x - vertices[i].originalPosition.x) * 0.1) +
 	}
-
-	// Determine where ray is being projected from camera view
-	raycaster.setFromCamera(normalizedMouse, camera);
-
-	// Send objects being intersected into a variable
-	let intersects = raycaster.intersectObjects([plane]);
-
-	if (intersects.length > 0) {
-
-			let faceBaseColor = intersects[0].face.baseColor;
-
-			plane.geometry.faces.forEach(function(face) {
-				face.color.r *= 255;
-				face.color.g *= 255;
-				face.color.b *= 255;
-
-				face.color.r += (faceBaseColor.r - face.color.r) * 0.01;
-				face.color.g += (faceBaseColor.g - face.color.g) * 0.01;
-				face.color.b += (faceBaseColor.b - face.color.b) * 0.01;
-
-				let rInt = Math.floor(face.color.r);
-				let gInt = Math.floor(face.color.g);
-				let bInt = Math.floor(face.color.b);
-
-				let newBasecol = "rgb(" + rInt + "," + gInt + "," + bInt + ")";
-				face.color.setStyle(newBasecol);
-			});
-			plane.geometry.colorsNeedUpdate = true;
-
-			intersects[0].face.color.setStyle("#006ea0");
-			plane.geometry.colorsNeedUpdate = true;
-	}
+	//
+	// // Determine where ray is being projected from camera view
+	// raycaster.setFromCamera(normalizedMouse, camera);
+	//
+	// // Send objects being intersected into a variable
+	// let intersects = raycaster.intersectObjects([plane]);
+	//
+	// if (intersects.length > 0) {
+	//
+	// 		let faceBaseColor = intersects[0].face.baseColor;
+	//
+	// 		plane.geometry.faces.forEach(function(face) {
+	// 			face.color.r *= 255;
+	// 			face.color.g *= 255;
+	// 			face.color.b *= 255;
+	//
+	// 			face.color.r += (faceBaseColor.r - face.color.r) * 0.01;
+	// 			face.color.g += (faceBaseColor.g - face.color.g) * 0.01;
+	// 			face.color.b += (faceBaseColor.b - face.color.b) * 0.01;
+	//
+	// 			let rInt = Math.floor(face.color.r);
+	// 			let gInt = Math.floor(face.color.g);
+	// 			let bInt = Math.floor(face.color.b);
+	//
+	// 			let newBasecol = "rgb(" + rInt + "," + gInt + "," + bInt + ")";
+	// 			face.color.setStyle(newBasecol);
+	// 		});
+	// 		plane.geometry.colorsNeedUpdate = true;
+	//
+	// 		intersects[0].face.color.setStyle("#006ea0");
+	// 		plane.geometry.colorsNeedUpdate = true;
+	// }
 	plane.geometry.verticesNeedUpdate = true;
 	plane.geometry.elementsNeedUpdate = true;
 
