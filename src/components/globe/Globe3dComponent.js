@@ -9,6 +9,17 @@ import BaseSceneComponent from './BaseSceneComponent';
 let TWEEN = require('tween.js');
 require('styles/Globe3d.sass');
 
+require( "../assets/three.js/examples/js/postprocessing/EffectComposer.js");
+require( "../assets/three.js/examples/js/postprocessing/RenderPass.js");
+require( "../assets/three.js/examples/js/postprocessing/ShaderPass.js");
+require( "../assets/three.js/examples/js/postprocessing/MaskPass.js");
+require( "../assets/three.js/examples/js/postprocessing/SSAOPass.js");
+
+require( "../assets/three.js/examples/js/shaders/DotScreenShader.js");
+require( "../assets/three.js/examples/js/shaders/CopyShader.js");
+require( "../assets/three.js/examples/js/shaders/RGBShiftShader.js");
+require( "../assets/three.js/examples/js/shaders/SSAOShader.js");
+
 const CAMERA_ANIMATION_DELAY = 3000;
 const CAMERA_ROTATE_TIME = 3000;
 const TEXTURE_SIZE = 512;
