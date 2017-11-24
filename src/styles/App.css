@@ -31,7 +31,7 @@ body {
   font-weight: 300;
   color: $lt-grey;
   color: black;
-  background-color: white;
+  background-color: black;
   user-select: none;
   -moz-user-select: none;
   -webkit-user-select: none;

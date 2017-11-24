@@ -4,7 +4,7 @@ import React from 'react';
 import * as THREE from 'three';
 import Beacon from './Beacon'
 import TCL from 'three-collada-loader';
-import BaseSceneComponent from './BaseSceneComponent';
+import BaseSceneComponent from '../BaseSceneComponent';
 
 let TWEEN = require('tween.js');
 require('styles/Globe3d.sass');

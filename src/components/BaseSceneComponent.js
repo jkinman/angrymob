@@ -2,14 +2,7 @@
 
 import React from 'react';
 import * as THREE from 'three'
-// window.THREE = THREE;
-
-// let ColladaLoader = require('../../../assets/ColladaLoader2.js');
-
 let TWEEN = require('tween.js');
-// import { EffectComposer, RenderPass, ShaderPass, MaskPass, SMAAPass } from "postprocessing";
-// import THREELib from "three-js";
-// let THREE = THREELib(['EffectComposer', 'RenderPass', 'ShaderPass', 'MaskPass', 'BloomPass', 'SSAOShader', 'CopyShader', 'ConvolutionShader', 'DotScreenPass', 'DotScreenShader']);
 
 
 const CAMERA_ANIMATION_DELAY = 3000;
